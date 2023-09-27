@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Styled Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd; /* Default border color */
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        input[type="text"].error,
+        input[type="email"].error,
+        input[type="url"].error,
+        textarea.error {
+            border-color: #ff0000; /* Red border for error */
+        }
+
+        .error-message {
+            color: #ff0000;
+            font-size: 12px;
+        }
+
+        .warning {
+            color: #ff6600;
+            font-size: 12px;
+        }
+
+        .submit-btn {
+            background-color: #0074d9;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <div class="error-message" id="nameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="website">Website:</label>
+                <input type="url" id="website" name="website">
+                <div class="error-message" id="websiteError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+                <div class="error-message" id="messageError"></div>
+            </div>
+
+            <input type="submit" class="submit-btn" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            var name = document.getElementById("name").value.trim();
+            var message = document.getElementById("message").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var website = document.getElementById("website").value.trim();
+
+            var hasError = false; // Track if any errors occur
+
+            if (name === "") {
+                document.getElementById("nameError").textContent = "This field is required.";
+                document.getElementById("name").classList.add("error");
+                hasError = true;
+            } else {
+                document.getElementById("nameError").textContent = "";
+                document.getElementById("name").classList.remove("error");
+            }
+
+            if (message === "") {
+                document.getElementById("messageError").textContent = "This field is required.";
+                document.getElementById("message").classList.add("error");
+                hasError = true;
+            } else {
+                document.getElementById("messageError").textContent = "";
+                document.getElementById("message").classList.remove("error");
+            }
+
+            // Email validation using a simple regular expression
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (email !== "" && !emailPattern.test(email)) {
+                document.getElementById("emailError").textContent = "A valid email address is required.";
+                document.getElementById("email").classList.add("error");
+                hasError = true;
+            } else {
+                document.getElementById("emailError").textContent = "";
+                document.getElementById("email").classList.remove("error");
+            }
+
+            // Website validation as a valid URL
+            var urlPattern = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\S*)$/;
+            if (website !== "" && !urlPattern.test(website)) {
+                document.getElementById("websiteError").textContent = "A valid URL is required.";
+                document.getElementById("website").classList.add("error");
+                hasError = true;
+            } else {
+                document.getElementById("websiteError").textContent = "";
+                document.getElementById("website").classList.remove("error");
+            }
+
+            if (hasError) {
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
+</body>
+</html>

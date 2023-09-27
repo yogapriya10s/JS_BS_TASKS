@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>21MIS1045 Task-2 Js</title>
+</head>
+<body>
+    <label for="inputString">String:</label>
+    <input type="text" id="inputString">
+    <button onclick="sortAndDisplay()">Sort</button>
+    <p id="output"></p>
+
+    <script>
+        function sortStringAlphabetically(inputString) {
+            // Convert the string to an array of characters, sort it, and then join it back into a string
+            return inputString.split('').sort().join('');
+        }
+
+        function sortAndDisplay() {
+            var inputElement = document.getElementById("inputString");
+            var outputElement = document.getElementById("output");
+            var inputValue = inputElement.value;
+            var sortedString = sortStringAlphabetically(inputValue);
+            outputElement.textContent = "Expected output: " + sortedString;
+        }
+    </script>
+</body>
+</html>

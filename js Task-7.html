@@ -1,0 +1,106 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train Animation Using Javascript</title>
+    <style>
+      #train {
+        width: 400px;
+        height: 180px;
+        position: relative;
+      }
+      .track {
+        width: 100%;
+        float: left;
+      }
+      
+      .control {
+        text-align: center;
+      }
+      .gair {
+        padding: 10px 20px;
+        background-color: yellow;
+        color: white;
+        cursor: pointer;
+      }
+      .screen {
+        text-align: center;
+        padding-top: 30px;
+      }
+      h3{
+        color: #0A1172;
+      }
+    </style>
+  </head>
+  <body><center>
+    <div class="track"><img id="train" src="https://www.javatpoint.com/oprweb/train1.png" /></div><br>
+    <h3>Click the following buttons to handle animation</h3>
+    <div class="control">
+      <button class="start" onclick="return startTrain();">Start</button>
+      <button class="stop" onclick="return stopTrain();">Stop</button>
+    </div>
+
+    <script>
+      let starter = 0;
+      let race = 0;
+      let run;
+      let gair = 20;
+      let moving_type = "left";
+      let running_status = "stop";
+      engine();
+      function engine() {
+        run = setInterval(function () {
+          //console.log("here");
+          if (running_status == "start") {
+            let control = (race - starter) * 20;
+            let reached = control / 5;
+            if (moving_type == "left") {
+              train.style.left = reached + "px";
+            } else {
+              train.style.right = reached + "px";
+            }
+
+            if (reached > 1200) {
+              // clearInterval(run);
+              if (moving_type == "left") {
+                train.style.float = "right";
+                train.style.left = "initial";
+                moving_type = "right";
+              } else {
+                train.style.float = "left";
+                moving_type = "left";
+                train.style.right = "initial";
+              }
+              starter = 0;
+              race = 0;
+            }
+            race++;
+          }
+        }, gair);
+      }
+      function startTrain() {
+        //start train code
+        running_status = "start";
+      }
+      function stopTrain() {
+        //stop train code
+        running_status = "stop";
+      }
+      function gairTrain(t, r) {
+        //change gair code
+        if (running_status == "start") {
+          gair = r;
+          clearInterval(run);
+          engine();
+          document.querySelector(".output").innerHTML =
+            "Train gair has been changed as " + t;
+        } else {
+          document.querySelector(".output").innerHTML =
+            "Please start train first";
+        }
+      }
+    </script>
+    </center>
+  </body>
+</html>

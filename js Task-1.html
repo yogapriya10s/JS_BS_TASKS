@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>21MIS1045 Task-1 Js</title>
+</head>
+<body>
+    <label for="inputNumber">Sample Data</label>
+    <input type="number" id="inputNumber">
+    <button onclick="reverseAndDisplay()">Reverse</button>
+    <p id="output"></p>
+
+    <script>
+        function reverse_a_number(n) {
+            n = n + "";
+            return n.split("").reverse().join("");
+        }
+
+        function reverseAndDisplay() {
+            var inputElement = document.getElementById("inputNumber");
+            var outputElement = document.getElementById("output");
+            var inputValue = inputElement.value;
+            var reversedNumber = reverse_a_number(inputValue);
+            outputElement.textContent = "Output: " + reversedNumber;
+        }
+    </script>
+</body>
+</html>

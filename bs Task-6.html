@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21MIS1045 BS-6</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>table{
+        margin-top: 70px;
+    }
+        #i {
+            width: 450px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <form action="https://www.ethnus.com" class="was-validated">
+            <table cellpadding="6">
+                <tr>
+                    <td>
+                        <label class="form-label">Name</label>
+                        <input id="i1" class="form-control" type="text" placeholder="" required />
+                        <div class="invalid-feedback">Name is required.</div>
+                    </td>
+                    <td id="invalid-msg"></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label class="form-label">E-Mail</label>
+                        <input id="i2" class="form-control" type="email" placeholder="" required />
+                        <div class="invalid-feedback">Email is required.</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label class="form-label">Password</label>
+                        <input id="i3" class="form-control" type="password" placeholder="" required />
+                        <div class="invalid-feedback">Password is required.</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label class="form-label">Hobbies</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected></option>
+                            <option value="1">Arts and Crafts</option>
+                            <option value="2">Dance</option>
+                            <option value="3">Music</option>
+                          </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="text-center"><button type="submit" id="i" class="btn btn-danger">Submit</button></td>
+                </tr>
+
+            </table>
+        </form>
+    </center>
+</body>
+</html>
